@@ -1,8 +1,13 @@
-// Redis Client
-
+import { promisify } from 'util';
 import redis from 'redis';
 
+/**
+ * Represents a Redis client.
+ */
 class RedisClient {
+   /**
+   * Creates a new RedisClient instance.
+   */
   constructor() {
     this.client = redis.createClient();
     this.client.on('error', (err) => {
