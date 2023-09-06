@@ -1,15 +1,15 @@
-// Server file
-
 import express from 'express';
-import router from './routes';
-import bodyParser from 'body-parser';
+import controllerRouting from './routes/index';
 
 const app = express();
-const port = 5000 || process.env.PORT;
+const port = process.env.PORT || 5000;
 
-app.use(bodyParser.json());
-app.use('/', router);
+app.use(express.json());
+
+controllerRouting(app);
 
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`Server running on port ${port}`);
 });
+
+export default app;
